@@ -1,2 +1,2 @@
 # SGV
-Sistema de Gestão de Votações
+Sistema de Gestão de Votação
