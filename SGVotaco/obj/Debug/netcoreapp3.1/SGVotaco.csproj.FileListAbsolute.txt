@@ -37,3 +37,4 @@ D:\Projetos\Gestão de Votos\Desktop\App\SGVotaco\SGVotaco\obj\Debug\netcoreapp3
 D:\Projetos\Gestão de Votos\Desktop\App\SGVotaco\SGVotaco\obj\Debug\netcoreapp3.1\SGVotaco.views.form.votacao.mainVotacao.resources
 D:\Projetos\Gestão de Votos\Desktop\App\SGVotaco\SGVotaco\obj\Debug\netcoreapp3.1\SGVotaco.views.form.votacao.addVotacao.resources
 D:\Projetos\Gestão de Votos\Desktop\App\SGVotaco\SGVotaco\obj\Debug\netcoreapp3.1\SGVotaco.views.form.votacao.configVotacao.resources
+D:\Projetos\Gestão de Votos\Desktop\App\SGVotaco\SGVotaco\obj\Debug\netcoreapp3.1\SGVotaco.views.form.votacao.listVotacao.resources

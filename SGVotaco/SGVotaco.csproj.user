@@ -40,6 +40,9 @@
     <Compile Update="views\form\votacao\configVotacao.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="views\form\votacao\listVotacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="views\form\votacao\mainVotacao.cs">
       <SubType>Form</SubType>
     </Compile>

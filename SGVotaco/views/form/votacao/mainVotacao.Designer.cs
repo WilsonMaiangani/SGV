@@ -37,23 +37,23 @@ namespace SGVotaco.views.form.votacao
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnConfig = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnListEleitor = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAddVotacao = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.panelForm.SuspendLayout();
             this.panelForm2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelForm
@@ -132,6 +132,27 @@ namespace SGVotaco.views.form.votacao
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnConfig);
+            this.panel1.Location = new System.Drawing.Point(2, 209);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(218, 59);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnConfig
+            // 
+            this.btnConfig.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfig.BackgroundImage")));
+            this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnConfig.FlatAppearance.BorderSize = 0;
+            this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfig.Location = new System.Drawing.Point(13, 5);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(188, 51);
+            this.btnConfig.TabIndex = 1;
+            this.btnConfig.UseVisualStyleBackColor = true;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnListEleitor);
@@ -151,6 +172,7 @@ namespace SGVotaco.views.form.votacao
             this.btnListEleitor.Size = new System.Drawing.Size(188, 51);
             this.btnListEleitor.TabIndex = 1;
             this.btnListEleitor.UseVisualStyleBackColor = true;
+            this.btnListEleitor.Click += new System.EventHandler(this.btnListEleitor_Click);
             // 
             // panel3
             // 
@@ -194,27 +216,6 @@ namespace SGVotaco.views.form.votacao
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnConfig);
-            this.panel1.Location = new System.Drawing.Point(2, 209);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(218, 59);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnConfig
-            // 
-            this.btnConfig.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfig.BackgroundImage")));
-            this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnConfig.FlatAppearance.BorderSize = 0;
-            this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Location = new System.Drawing.Point(13, 5);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(188, 51);
-            this.btnConfig.TabIndex = 1;
-            this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
-            // 
             // mainVotacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -232,10 +233,10 @@ namespace SGVotaco.views.form.votacao
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

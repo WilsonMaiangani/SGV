@@ -42,7 +42,6 @@ namespace SGVotaco.views.form.presidente
         {
             try
             {
-
                 if (string.IsNullOrEmpty(txtNome.Text)) lblMensagem2.Text = "Preencha o nome é obrigatorio!";
                 else if (string.IsNullOrEmpty(txtBi.Text)) lblMensagem2.Text = "Preencha o Bi é obrigatorio!";
                 else if (string.IsNullOrEmpty(comboBox.Text)) lblMensagem2.Text = "Selecione o genero é obrigatorio!";

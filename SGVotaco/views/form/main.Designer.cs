@@ -37,6 +37,7 @@ namespace SGVotaco.views.form
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelForm = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -45,6 +46,7 @@ namespace SGVotaco.views.form
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnShutdown);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -116,6 +118,17 @@ namespace SGVotaco.views.form
             this.panelForm.Size = new System.Drawing.Size(1071, 576);
             this.panelForm.TabIndex = 4;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(21, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 18);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "SGV";
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -132,6 +145,7 @@ namespace SGVotaco.views.form
             this.Text = "main";
             this.Load += new System.EventHandler(this.main_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -148,5 +162,6 @@ namespace SGVotaco.views.form
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.Panel panelForm;
+        private System.Windows.Forms.Label label3;
     }
 }

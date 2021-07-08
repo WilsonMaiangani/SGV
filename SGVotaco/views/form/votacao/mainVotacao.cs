@@ -41,5 +41,14 @@ namespace SGVotaco.views.form.votacao
             panelForm2.Controls.Add(form);
             form.Show();
         }
+
+        private void btnListEleitor_Click(object sender, EventArgs e)
+        {
+            panelForm2.Controls.Clear();
+
+            form = new listVotacao { TopLevel = false, FormBorderStyle = FormBorderStyle.None, Dock = DockStyle.Fill };
+            panelForm2.Controls.Add(form);
+            form.Show();
+        }
     }
 }

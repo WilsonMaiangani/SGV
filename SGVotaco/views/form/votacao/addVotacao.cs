@@ -52,14 +52,17 @@ namespace SGVotaco.views.form.votacao
 
             listDatas = dataContext.GetDatas("ConfigVotacao", obj);
 
-            configVotacao = new ConfigVotacao
+            if (listDatas.Count > 0)
             {
-                dataComeco = listDatas[0].ToString(),
-                horaInicio = listDatas[1].ToString(),
-                horaTermino = listDatas[2].ToString(),
-                id = Convert.ToInt32(listDatas[3])
-            };
-            configVotacao.dataComeco = configVotacao.dataComeco.Replace("00:00:00", string.Empty).Trim();
+                configVotacao = new ConfigVotacao
+                {
+                    dataComeco = listDatas[0].ToString(),
+                    horaInicio = listDatas[1].ToString(),
+                    horaTermino = listDatas[2].ToString(),
+                    id = Convert.ToInt32(listDatas[3])
+                };
+                configVotacao.dataComeco = configVotacao.dataComeco.Replace("00:00:00", string.Empty).Trim();
+            }
 
         }
 
@@ -158,84 +161,74 @@ namespace SGVotaco.views.form.votacao
             {
                 lblMensagem2.Text = string.Empty;
 
-                if (configVotacao.dataComeco.Equals(ataAtual))
+                if (listDatas.Count > 0)
                 {
-                    if (Convert.ToDateTime(horaAtual) <= Convert.ToDateTime(configVotacao.horaTermino))
+
+
+                    if (configVotacao.dataComeco.Equals(ataAtual))
                     {
-                        if (Convert.ToDateTime(horaAtual) >= Convert.ToDateTime(configVotacao.horaInicio))
+                        if (Convert.ToDateTime(horaAtual) <= Convert.ToDateTime(configVotacao.horaTermino))
                         {
-                            var _eleitores = new eleitores
+                            if (Convert.ToDateTime(horaAtual) >= Convert.ToDateTime(configVotacao.horaInicio))
                             {
-                                codVoto = txtNome.Text.Trim()
-                            };
-                            var obj = new Dictionary<string, string>
+                                var _eleitores = new eleitores
+                                {
+                                    codVoto = txtNome.Text.Trim()
+                                };
+                                var obj = new Dictionary<string, string>
                                 {
                                     {"codVoto", $"'{_eleitores.codVoto}'" }
                                 };
 
-                            if (dataContext.GetData("Eleitores", obj) == _eleitores.codVoto)
-                            {
-                                obj = new Dictionary<string, string>
+                                if (dataContext.GetData("Eleitores", obj) == _eleitores.codVoto)
+                                {
+                                    obj = new Dictionary<string, string>
                                 {
                                     {"codVoto", $"'{_eleitores.codVoto}'" },
                                     {"id", $"" }
                                 };
-                                _eleitores.id = Convert.ToInt32(dataContext.GetData("Eleitores", obj));
+                                    _eleitores.id = Convert.ToInt32(dataContext.GetData("Eleitores", obj));
 
-                                if (_eleitores.id > 0)
-                                {
-                                    obj = new Dictionary<string, string>
-                                    {
-                                        {"idEleitor",$"'{_eleitores.id}'" },
-                                        {"idConfig","" }
-                                    };
-
-                                    if (dataContext.GetData("Votacao", obj) == "Not")
+                                    if (_eleitores.id > 0)
                                     {
                                         obj = new Dictionary<string, string>
+                                    {
+                                        {"idEleitor",$"'{_eleitores.id}'" },
+                                        {"idConfig","" },
+                                        {"and",$"'{configVotacao.id}'" }
+                                    };
+
+                                        if (dataContext.GetData("Votacao", obj) == "Not")
+                                        {
+                                            obj = new Dictionary<string, string>
                                         {
                                             {"idPartido",$"'{_partido.id}'" },
                                             {"idEleitor",$"'{_eleitores.id}'" },
                                             {"idConfig",$"'{configVotacao.id}'" },
                                             {"dataCriacao",$"'{DateTime.Now.ToString("yyy:MM:dd")}'" }
                                         };
-                                        if (dataContext.add("Votacao", obj) == "Ok")
-                                        {
-                                            txtNome.Text = comboBox.Text = string.Empty;
-                                            timer1.Enabled = true;
-                                            ShowHide(true);
+                                            if (dataContext.add("Votacao", obj) == "Ok")
+                                            {
+                                                txtNome.Text = comboBox.Text = string.Empty;
+                                                timer1.Enabled = true;
+                                                ShowHide(true);
+                                            }
                                         }
+                                        else lblMensagem2.Text = $"Caro eleitor para o ano de {DateTime.Now.Year} o seu voto já se encotra registrado.";
                                     }
-                                    else lblMensagem2.Text = $"Caro eleitor para o ano de {DateTime.Now.Year} o seu voto já se encotra registrado.";
                                 }
+                                else lblMensagem2.Text = $"Caro eleitor este código '{_eleitores.codVoto}' de votação é invalido.\n Por favor verifique o seu código e tente novamente. ";
                             }
-                            else lblMensagem2.Text = $"Caro eleitor este código '{_eleitores.codVoto}' de votação é invalido.\n Por favor verifique o seu código e tente novamente. ";
+                            else
+                                lblMensagem2.Text = $"A emissão de votos será realizada neste horario: {configVotacao.horaInicio} ";
                         }
                         else
-                            lblMensagem2.Text = $"A emissão de votos será realizada neste horario: {configVotacao.horaInicio} ";
+                            lblMensagem2.Text = $"Sessão de emissão de votos encontra-se encerrada \nporque a hora de termino desta sessão chegou ao fim\n Hora de Termino {configVotacao.horaTermino} ";
                     }
-                    else
-                        lblMensagem2.Text = $"Sessão de emissão de votos encontra-se encerrada \nporque a hora de termino desta sessão chegou ao fim\n Hora de Termino {configVotacao.horaTermino} ";
+                    else lblMensagem2.Text = $"Não é possível começar a votação devido o intervalo das datas\n Data de começo: {configVotacao.dataComeco} and data atual: {ataAtual}";
                 }
-                else lblMensagem2.Text = $"Não é possível começar a votação devido o intervalo das datas\n Data de começo: {configVotacao.dataComeco} and data atual: {ataAtual}";
+                else lblMensagem2.Text = $"Não é possível realizar a votação.\n Por favor va até a área de configuração e faça a configuraçao";
 
-                // MessageBox.Show(DateTime.Now.ToShortDateString() + "=>" + configVotacao.dataComeco);
-
-
-                //{
-                //    obj = new Dictionary<string, string>
-                //    {
-                //        {"_data", $"'{DateTime.Now.Year}'" },
-                //        {"idEleitor", $"" }
-                //    };
-
-                //    if (dataContext.GetData("Eleitores", obj) == "Not")
-                //    {
-
-                //    }
-                //    else lblMensagem2.Text = $"Caro eleitor para o ano de {DateTime.Now.Year} o seu voto já se encotra registrado.";
-                //}
-                //else lblMensagem2.Text = $"Caro eleitor este código '{txtNome.Text.Trim()}' de votação é invalido.";
             }
         }
 

@@ -116,13 +116,18 @@ namespace SGVotaco.controllers
 
         public string GetData(string tabela, Dictionary<string, string> data)
         {
-            string campo = "", value = "", campoS = "";
+            string campo = "", value = "", campoS = "", and = "", valueAnd = "";
             try
             {
                 foreach (KeyValuePair<string, string> item in data)
                 {
                     if (!string.IsNullOrEmpty(item.Key) && string.IsNullOrEmpty(item.Value)) campoS = item.Key;
-                    else
+                    else if (item.Key == "and")
+                    {
+                        and = item.Key;
+                        valueAnd = item.Value;
+                    }
+                    else if (!string.IsNullOrEmpty(item.Key) && !string.IsNullOrEmpty(item.Value) && item.Key != "and")
                     {
                         campo = item.Key;
                         value = item.Value;
@@ -130,8 +135,11 @@ namespace SGVotaco.controllers
                 }
                 if (string.IsNullOrEmpty(campoS))
                     DbConexao.sqlCommand = new MySqlCommand($"Select {campo} from {tabela} where {campo} = {value} ;", DbConexao.conex);
-                else
+                else if (!string.IsNullOrEmpty(campoS) && string.IsNullOrEmpty(and))
                     DbConexao.sqlCommand = new MySqlCommand($"Select {campoS} from {tabela} where {campo} = {value} ;", DbConexao.conex);
+                else if (!string.IsNullOrEmpty(and) && and == "and")
+                    DbConexao.sqlCommand = new MySqlCommand($"Select {campoS} from {tabela} where {campo} = {value} and {campoS} = {valueAnd} ;", DbConexao.conex);
+
 
                 DbConexao.sqlDataReader = DbConexao.sqlCommand.ExecuteReader();
 
@@ -310,15 +318,15 @@ namespace SGVotaco.controllers
                         _campo += $"{campo} = {value},";
                     }
                 }
-                    _campo = _campo.Substring(0, _campo.Length - 1);
-                    if (!string.IsNullOrEmpty(op))
-                        DbConexao.sqlCommand = new MySqlCommand($"Update {tabela} set {_campo} where {campoWhere} {op} {valueWhere} ;", DbConexao.conex);
-                    else
-                        DbConexao.sqlCommand = new MySqlCommand($"Update {tabela} set {_campo} where {campoWhere} = {valueWhere} ;", DbConexao.conex);
+                _campo = _campo.Substring(0, _campo.Length - 1);
+                if (!string.IsNullOrEmpty(op))
+                    DbConexao.sqlCommand = new MySqlCommand($"Update {tabela} set {_campo} where {campoWhere} {op} {valueWhere} ;", DbConexao.conex);
+                else
+                    DbConexao.sqlCommand = new MySqlCommand($"Update {tabela} set {_campo} where {campoWhere} = {valueWhere} ;", DbConexao.conex);
 
                 if (DbConexao.sqlCommand.ExecuteNonQuery() > 0)
                     mensagem = "Ok";
-        
+
             }
             catch (Exception ex)
             {
