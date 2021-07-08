@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="views\form\eleitore\listEleitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\eleitore\mainEleitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\mainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\partido\addPartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\partido\listPartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\partido\mainPartido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\presidente\addPresidente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\presidente\listPresidente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\presidente\mainPresidente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\votacao\addVotacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\votacao\configVotacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\form\votacao\mainVotacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="views\Splash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
